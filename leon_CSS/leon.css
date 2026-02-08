@@ -4,16 +4,21 @@
   --section-padding: 60px;
   --section-color: #f6f6f6;
 }
+
 /* End variables */
 
 /* Start Global Rules */
 * {
   box-sizing: border-box;
 }
+
 html {
   scroll-behavior: smooth;
 }
+
 body {
+  padding-top: 40px;
+  /* اضبط هذه القيمة لتعويض ارتفاع شريط الإعلان */
   text-transform: capitalize;
   font-family: "Work Sans", sans-serif;
   margin: 0;
@@ -40,36 +45,42 @@ body {
   letter-spacing: 30px;
   font-weight: 800;
 }
-.special-heading + p {
+
+.special-heading+p {
   text-align: center;
   margin: -30px 0 0;
   color: gray;
   font-size: 20px;
   text-transform: lowercase;
 }
+
 @media (max-width: 767px) {
   .special-heading {
     font-size: 60px;
     letter-spacing: -3px;
   }
-  .special-heading + p {
+
+  .special-heading+p {
     margin: -20px;
   }
 }
+
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
 }
+
 /* End Componets */
 /* Responsive container widths */
 @media screen and (min-width: 400px) {
   .features .feat-1 {
-    border-bottom: 4px dashed var(--main-color);
+    border: 4px dashed var(--main-color);
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   }
 }
+
 @media (min-width: 768px) {
   .container {
     max-width: 750px;
@@ -77,11 +88,13 @@ body {
     color: #000;
   }
 }
+
 @media (min-width: 992px) {
   .container {
     max-width: 970px;
   }
 }
+
 @media (min-width: 1200px) {
   .container {
     max-width: 1170px;
@@ -93,25 +106,111 @@ body {
   color: #000;
   /* border-radius is not supported on ::selection, so it should be removed */
 }
+
 /* End Global Rules */
 
 /* Start header */
 .header {
-  padding: 20px 0;
+  padding: 20px 0 0;
+  position: sticky;
+  top: 0px;
+  background-color: #fff;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding-top: 40px;
+  /* اضبط هذه القيمة لتعويض ارتفاع شريط الإعلان */
 }
+
+/* تنسيق شريط الإعلان الرئيسي */
+.announcement-bar {
+  /* الوضع الثابت في أعلى الشاشة */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  /* تأكد من أن الشريط يظهر فوق كل العناصر الأخرى */
+
+  /* الألوان والخلفية */
+  width: 100%;
+  background-color: #f7d024;
+  /* لون أصفر بارز، يمكنك تعديله */
+  color: #1a1a1a;
+  /* لون النص - أسود داكن */
+  text-align: center;
+  padding: 10px 40px;
+  /* مساحة داخلية */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* ظل خفيف */
+  font-size: 16px;
+  direction: rtl;
+  /* لضمان صحة عرض النص العربي */
+}
+
+/* تنسيق النص داخل الشريط */
+.announcement-bar p {
+  margin: 0;
+  display: inline;
+  /* لجعل النص والرابط في نفس السطر */
+  line-height: 1.5;
+}
+
+/* تنسيق رابط CTA (الزر داخل الشريط) */
+.cta-link {
+  color: #007bff;
+  /* لون مميز للرابط - أزرق مثلاً */
+  font-weight: bold;
+  text-decoration: underline;
+  /* لتمييزه كرابط */
+  margin-right: 5px;
+  transition: color 0.3s;
+}
+
+.cta-link:hover {
+  color: #0056b3;
+  /* لون عند المرور بالماوس */
+}
+
+/* تنسيق زر الإغلاق */
+.close-btn {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #1a1a1a;
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 5px;
+}
+
+/* padding: 0px 0 0;
+    position: sticky;
+    top: 10px;
+    background-color: #fff;
+    z-index: 1000;
+    box-shadow: 1px 5px 20px 9px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    width: 800px;
+    text-align: center;
+    margin: 20px auto; */
 .header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 @media (max-width: 767px) {
   .header .container .logo {
     width: 80px;
   }
+
   .header .container strong {
     font-size: 16px;
   }
 }
+
 .header .logo {
   width: 100px;
   cursor: pointer;
@@ -122,12 +221,15 @@ body {
 strong {
   font-size: 22px;
 }
+
 .header .links {
   position: relative;
 }
+
 .header .links:hover .icon span:nth-child(2) {
   width: 100%;
 }
+
 .header .icon {
   width: 30px;
   display: flex;
@@ -135,23 +237,28 @@ strong {
   justify-content: flex-end;
   cursor: pointer;
 }
+
 .header .icon span {
   height: 2px;
   background-color: #222;
   margin-bottom: 5px;
   border-radius: 5px;
 }
+
 .header .icon span:first-child,
 .header .icon span:last-child {
   width: 100%;
 }
+
 .header .icon span:nth-child(2) {
   width: 50%;
   transition: width 0.3s linear;
 }
+
 .header .icon span:last-child {
   margin-bottom: 0;
 }
+
 .header .links ul {
   margin: 0;
   padding: 0;
@@ -166,6 +273,7 @@ strong {
   display: none;
   z-index: 10;
 }
+
 .header .links ul::before {
   content: "";
   border-width: 10px;
@@ -176,9 +284,11 @@ strong {
   top: -22px;
   z-index: 11;
 }
+
 .header .links:hover ul {
   display: block;
 }
+
 .header .links ul a {
   color: #999;
   text-decoration: none;
@@ -186,21 +296,25 @@ strong {
   display: block;
   transition: padding-left 0.3s, color 0.5s;
 }
+
 .header .links ul a:hover,
 .header .links ul a:focus {
   padding-left: 25px;
   color: #000;
   /* text-decoration: underline solid black 2px; */
 }
+
 .header .links li:not(:last-child) {
   border-bottom: 1px solid #ddd;
 }
+
 /* End header */
 
 /* Start landing section */
 .landing {
   background-image: url("../Images/background-page.png ");
   width: 100%;
+  /* Subtract header + announcement bar height (approx 140px) to keep visible */
   height: calc(100vh - 140px);
   background-repeat: no-repeat;
   background-size: cover;
@@ -210,6 +324,7 @@ strong {
   max-width: 100%;
   overflow: hidden;
 }
+
 /* other case */
 /* .landing-video {
   position: absolute;
@@ -230,24 +345,29 @@ strong {
   /* width: 360px;
   max-width: 100%; */
 }
+
 .landing .intro-text h1 {
   margin: 0;
   font-size: 50px;
   line-height: 1.2;
 }
+
 .landing .intro-text p {
   font-size: 20px;
   font-weight: 700;
   color: #fff;
 }
+
 @media (max-width: 767px) {
   .landing .intro-text h1 {
     font-size: 28px;
   }
+
   .landing .intro-text p {
     font-size: 16px;
   }
 }
+
 button {
   background-color: var(--main-color);
   color: #fff;
@@ -259,6 +379,7 @@ button {
   font-size: 20px;
   box-shadow: -1px 1px 5px 0px #ffb300;
 }
+
 button:hover,
 button:focus {
   background-color: #ffb300;
@@ -268,6 +389,7 @@ button:focus {
 button:active {
   box-shadow: 0px 2px 7px 1px rgb(158, 158, 158);
 }
+
 audio {
   display: block;
   margin: 24px auto;
@@ -276,6 +398,7 @@ audio {
   outline: none;
   transform: translate(0px, 50%);
 }
+
 /* End landing section */
 
 /* Start Features */
@@ -285,40 +408,50 @@ audio {
   padding-bottom: 60px;
   direction: rtl;
 }
+
 .features .container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px; /* Increased gap to add more space between items */
+  gap: 30px;
+  /* Increased gap to add more space between items */
 }
+
 .features .feat {
   text-align: center;
   box-shadow: 0 10px 17px 0 rgba(0, 0, 0, 0.1);
   transition: transform 0.18s;
-  margin: 0 10px; /* Add horizontal margin to increase space between cards */
+  margin: 0 10px;
+  /* Add horizontal margin to increase space between cards */
   background-color: #fff;
   padding: 10px;
   border-radius: 30px;
 }
+
 .features .feat:hover {
   transform: translateY(-7px) scale(1.12);
 }
+
 .bac-span {
   background-color: var(--main-color);
   color: #000;
 }
+
 .features .feat i {
   color: var(--main-color);
   font-size: 50px;
 }
+
 .features .feat h2 {
   font-weight: 800;
   margin: 30px 0;
 }
+
 .features .feat p {
   line-height: 1.8;
   color: #777;
   font-size: 17px;
 }
+
 /* End Features */
 /* Start Services */
 .services {
@@ -332,11 +465,13 @@ audio {
   gap: 30px;
   margin-top: 60px;
 }
+
 .services .services-content .srv {
   display: flex;
   margin-bottom: 30px;
   align-items: flex-start;
 }
+
 @media (max-width: 767px) {
   .services .services-content .srv {
     flex-direction: column;
@@ -344,17 +479,21 @@ audio {
     align-items: center;
   }
 }
+
 .services .services-content .srv i {
   flex-basis: 60px;
   color: var(--main-color);
 }
+
 .services .services-content .srv .text {
   flex: 1;
 }
+
 .services .services-content .srv .text h3 {
   margin: 0 0 20px;
   /* margin-bottom: 8px; */
 }
+
 .services .services-content .srv .text p {
   color: #444;
   line-height: 1.5;
@@ -369,6 +508,7 @@ audio {
   position: relative;
   margin-bottom: 27px;
 }
+
 .services .services-content .image::before {
   content: "";
   position: absolute;
@@ -380,15 +520,18 @@ audio {
   top: -50px;
   /* border-radius: 8px; */
 }
+
 .services .services-content .image img {
   width: 100%;
   height: 100%;
 }
+
 @media (max-width: 1199px) {
   .image-column {
     display: none;
   }
 }
+
 /* End Services */
 /* Start Portfolio */
 .portfolio {
@@ -396,30 +539,37 @@ audio {
   padding-bottom: var(--section-padding);
   background-color: var(--section-color);
 }
+
 .portfolio .portfolio-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
   margin-top: 80px;
 }
+
 .portfolio .portfolio-content .card {
   background-color: #fff;
   border-radius: 10px;
 }
+
 .portfolio .portfolio-content .card img {
   max-width: 100%;
 }
+
 .portfolio .portfolio-content .card .info {
   padding: 20px;
 }
+
 .portfolio .portfolio-content .card h3 {
   margin: 10px 0;
 }
+
 .portfolio .portfolio-content .card p {
   color: #444;
   line-height: 1.6;
   margin: 0;
 }
+
 /* End Portfolio */
 /* start about */
 .about {
@@ -476,6 +626,7 @@ audio {
 }
 
 @media (max-width: 991px) {
+
   .about .about-content .image::before,
   .about .about-content .image::after {
     display: none;
@@ -485,6 +636,7 @@ audio {
 .about .about-content .text {
   flex-basis: calc(100% - 500px);
 }
+
 @media (max-width: 991px) {
   .about .about-content .text {
     width: 100%;
@@ -492,6 +644,7 @@ audio {
     text-align: center;
   }
 }
+
 .about .about-content .text p:first-of-type {
   font-weight: bold;
   margin-bottom: 50px;
@@ -509,6 +662,7 @@ audio {
   font-size: 15px;
   line-height: 1.5;
 }
+
 /* End about */
 /* start contact */
 .contact {
@@ -516,11 +670,13 @@ audio {
   padding-bottom: calc(var(--section-padding) + 60px);
   background-color: var(--section-color);
 }
+
 .contact .info {
   padding-top: var(--section-padding);
   padding-bottom: calc(var(--section-padding) + 60px);
   text-align: center;
 }
+
 .contact .info .label {
   font-size: 30px;
   font-weight: 800;
@@ -528,6 +684,7 @@ audio {
   letter-spacing: -2;
   margin-bottom: 15px;
 }
+
 .contact .info .link {
   display: block;
   font-size: 30px;
@@ -536,25 +693,31 @@ audio {
   text-decoration: none;
   margin-bottom: 20px;
 }
+
 .contact .info .link i {
   color: var(--main-color);
   margin-left: 10px;
 }
+
 .contact .info .social {
   display: flex;
   justify-content: center;
   font-size: 16px;
 }
+
 @media (max-width: 767px) {
+
   .contact .info .link,
   .contact .info .label {
     font-size: 20px;
   }
 }
+
 /* End contact */
 /* Start Footer */
 .footer {
-  background-color: #111; /* أي لون */
+  background-color: #111;
+  /* أي لون */
   width: 100%;
   padding: 20px 0;
   margin-bottom: -60px;
@@ -562,36 +725,43 @@ audio {
 
 .footer .container {
   text-align: center;
-  max-width: 1200px; /* لو عندك container */
+  max-width: 1200px;
+  /* لو عندك container */
   margin: auto;
   /* padding: 0 20px; */
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 @media (max-width: 767px) {
   .footer .container p:first-child {
     font-size: 10px;
     display: inline-block;
     /* padding-right: 5px; */
   }
+
   .footer .container p:last-child {
     font-size: 12px;
   }
 }
+
 .footer .container p {
   margin: 0;
   padding: 0;
   color: #999;
 }
+
 .footer .container p:last-child {
   color: #fff;
 }
+
 .footer .container p:last-child a {
   color: #0a66c2;
   background-color: #000;
   transition: color 0.3s, text-decoration 0.3s;
 }
+
 .footer .container p:last-child a:hover {
   text-decoration: none;
   color: var(--main-color);
@@ -612,6 +782,7 @@ audio {
   /* color: #0866ff; */
   color: #fff;
 }
+
 /* End Footer */
 /* Start about page */
 .person-cards-container {
@@ -707,4 +878,5 @@ audio {
 .person-add-btn:hover {
   background: #3976ea;
 }
+
 /* End about page */
