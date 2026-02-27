@@ -145,6 +145,10 @@ body {
   line-height: 1.5;
 }
 
+.announcement-bar p::selection {
+  background-color: white;
+}
+
 /* تنسيق رابط CTA (الزر داخل الشريط) */
 .cta-link {
   color: #007bff;/* لون مميز للرابط - أزرق مثلاً */
@@ -183,7 +187,6 @@ body {
   /* padding-top: 40px; اضبط هذه القيمة لتعويض ارتفاع شريط الإعلان */
    display: flex;
   justify-content: space-between;
-  /* align-items: center; */
 }
 
 .header .container {
@@ -335,7 +338,7 @@ body {
   background-image: url("../Images/background-page.png");
   width: 100%;
   /* Subtract header + announcement bar height (approx 140px) to keep visible */
-  height: calc(100vh - 140px);
+  height: calc(100vh - 120px);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
