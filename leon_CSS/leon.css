@@ -40,9 +40,9 @@ body {
 .special-heading {
   font-size: 100px;
   text-align: center;
-  color: rgba(255, 196, 77, 0.5);
+  color: rgba(255, 196, 77, 0.7);
   margin: 0;
-  letter-spacing: 30px;
+  letter-spacing: -3px;
   font-weight: 800;
 }
 
@@ -110,24 +110,13 @@ body {
 /* End Global Rules */
 
 /* Start header */
-.header {
-  padding: 20px 0 0;
-  position: sticky;
-  top: 0px;
-  background-color: #fff;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding-top: 40px;
-  /* اضبط هذه القيمة لتعويض ارتفاع شريط الإعلان */
-}
-
 /* تنسيق شريط الإعلان الرئيسي */
 .announcement-bar {
-  /* الوضع الثابت في أعلى الشاشة */
-  position: fixed;
+ /* الوضع الثابت في أعلى الشاشة */
+  /* position: fixed;
   top: 0;
-  left: 0;
-  z-index: 1000;
+  left: 0; 
+  z-index: 1000; */
   /* تأكد من أن الشريط يظهر فوق كل العناصر الأخرى */
 
   /* الألوان والخلفية */
@@ -143,6 +132,8 @@ body {
   /* ظل خفيف */
   font-size: 16px;
   direction: rtl;
+  z-index: 1;
+  position: absolute;
   /* لضمان صحة عرض النص العربي */
 }
 
@@ -156,18 +147,15 @@ body {
 
 /* تنسيق رابط CTA (الزر داخل الشريط) */
 .cta-link {
-  color: #007bff;
-  /* لون مميز للرابط - أزرق مثلاً */
+  color: #007bff;/* لون مميز للرابط - أزرق مثلاً */
   font-weight: bold;
-  text-decoration: underline;
-  /* لتمييزه كرابط */
+  text-decoration: underline;/* لتمييزه كرابط */
   margin-right: 5px;
   transition: color 0.3s;
 }
 
 .cta-link:hover {
-  color: #0056b3;
-  /* لون عند المرور بالماوس */
+  color: #0056b3;/* لون عند المرور بالماوس */
 }
 
 /* تنسيق زر الإغلاق */
@@ -185,30 +173,27 @@ body {
   padding: 0 5px;
 }
 
-/* padding: 0px 0 0;
-    position: sticky;
-    top: 10px;
-    background-color: #fff;
-    z-index: 1000;
-    box-shadow: 1px 5px 20px 9px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    width: 800px;
-    text-align: center;
-    margin: 20px auto; */
+.header {
+  padding: 10px;
+  position: sticky;
+  top: 0px;
+  background-color: #fff;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  /* padding-top: 40px; اضبط هذه القيمة لتعويض ارتفاع شريط الإعلان */
+   display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+}
+
 .header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-@media (max-width: 767px) {
-  .header .container .logo {
-    width: 80px;
-  }
-
-  .header .container strong {
-    font-size: 16px;
-  }
+.header strong {
+  display: none;
 }
 
 .header .logo {
@@ -218,10 +203,43 @@ body {
   color: var(--main-color);
 }
 
-strong {
-  font-size: 22px;
+@media (max-width: 767px) {
+  .header .logo {
+    width: 80px;
+  }
+
+  .header strong {
+    font-size: 16px; 
+    display: block;
+  }
 }
 
+.header ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+
+.header ul li {
+  padding-right: 20px;
+}
+
+.header ul li a {
+  text-decoration: none;
+  color: #999;
+  font-size: 19px;
+  font-weight: 600;
+  transition: color .3s linear;
+}
+
+.header ul li a:hover {
+  color: #000;
+  text-decoration: underline wavy var(--main-color) 2px;
+}
+
+@media (max-width: 767px) {
 .header .links {
   position: relative;
 }
@@ -295,24 +313,26 @@ strong {
   padding: 10px 15px;
   display: block;
   transition: padding-left 0.3s, color 0.5s;
+  font-size: 14px;
 }
 
 .header .links ul a:hover,
 .header .links ul a:focus {
   padding-left: 25px;
   color: #000;
-  /* text-decoration: underline solid black 2px; */
+  text-decoration: underline wavy var(--main-color) 2px;
 }
 
 .header .links li:not(:last-child) {
   border-bottom: 1px solid #ddd;
-}
+} 
 
+} 
 /* End header */
 
 /* Start landing section */
 .landing {
-  background-image: url("../Images/background-page.png ");
+  background-image: url("../Images/background-page.png");
   width: 100%;
   /* Subtract header + announcement bar height (approx 140px) to keep visible */
   height: calc(100vh - 140px);
@@ -352,6 +372,13 @@ strong {
   line-height: 1.2;
 }
 
+@media (max-width: 767px) {
+  .landing .intro-text h1 span {
+  background-color: transparent;
+  color: #fff;
+  width: fit-content;
+}
+}
 .landing .intro-text p {
   font-size: 20px;
   font-weight: 700;
